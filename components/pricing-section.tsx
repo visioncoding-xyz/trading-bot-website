@@ -1,0 +1,162 @@
+"use client"
+
+import { Check, Sparkles } from "lucide-react"
+import { useState } from "react"
+
+const pricingPlans = [
+  {
+    name: "Starter",
+    price: "Free",
+    description: "Perfect for getting started with v0",
+    features: ["5 components per month", "Basic templates", "Community support", "Standard components"],
+    popular: false,
+    cta: "Get Started",
+  },
+  {
+    name: "Pro",
+    monthlyPrice: 29,
+    annualPrice: 24,
+    description: "For professionals building serious projects",
+    features: [
+      "Unlimited components",
+      "Premium templates",
+      "Priority support",
+      "Advanced animations",
+      "Custom themes",
+      "Export to GitHub",
+    ],
+    popular: true,
+    cta: "Start Free Trial",
+  },
+  {
+    name: "Team",
+    monthlyPrice: 99,
+    annualPrice: 79,
+    description: "For teams collaborating on projects",
+    features: [
+      "Everything in Pro",
+      "Team collaboration",
+      "Shared component library",
+      "Advanced analytics",
+      "Custom integrations",
+      "Dedicated support",
+    ],
+    popular: false,
+    cta: "Contact Sales",
+  },
+]
+
+export function PricingSection() {
+  const [isAnnual, setIsAnnual] = useState(false)
+
+  return (
+    <section className="relative py-24 px-4">
+      <div className="max-w-7xl mx-auto">
+        {/* Header */}
+        <div className="text-center mb-16">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm mb-6">
+            <Sparkles className="w-4 h-4 text-[#e78a53]" />
+            <span className="text-sm font-medium text-white/80">Pricing</span>
+          </div>
+
+          <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-white via-white to-white/60 bg-clip-text text-transparent mb-4">
+            Choose your plan
+          </h2>
+
+          <p className="text-lg text-white/60 max-w-2xl mx-auto mb-8">
+            Start building beautiful components today. Upgrade anytime as your needs grow.
+          </p>
+
+          {/* Monthly/Annual Toggle */}
+          <div className="flex items-center justify-center gap-4 p-1 bg-white/5 rounded-full border border-white/10 backdrop-blur-sm w-fit mx-auto">
+            <button
+              onClick={() => setIsAnnual(false)}
+              className={`px-6 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
+                !isAnnual ? "bg-[#e78a53] text-white shadow-lg" : "text-white/60 hover:text-white/80"
+              }`}
+            >
+              Monthly
+            </button>
+            <button
+              onClick={() => setIsAnnual(true)}
+              className={`px-6 py-2 rounded-full text-sm font-medium transition-all duration-200 relative ${
+                isAnnual ? "bg-[#e78a53] text-white shadow-lg" : "text-white/60 hover:text-white/80"
+              }`}
+            >
+              Annual
+              <span className="absolute -top-2 -right-2 bg-green-500 text-white text-xs px-2 py-0.5 rounded-full">
+                Save 20%
+              </span>
+            </button>
+          </div>
+        </div>
+
+        {/* Pricing Cards */}
+        <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+          {pricingPlans.map((plan, index) => (
+            <div
+              key={plan.name}
+              className={`relative rounded-2xl p-8 backdrop-blur-sm border transition-all duration-300 hover:-translate-y-1 ${
+                plan.popular
+                  ? "bg-gradient-to-b from-[#e78a53]/10 to-transparent border-[#e78a53]/30 shadow-lg shadow-[#e78a53]/10"
+                  : "bg-white/5 border-white/10 hover:border-white/20"
+              }`}
+            >
+              {plan.popular && (
+                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                  <div className="bg-gradient-to-r from-[#e78a53] to-[#e78a53]/80 text-white text-sm font-medium px-4 py-2 rounded-full">
+                    Most Popular
+                  </div>
+                </div>
+              )}
+
+              <div className="text-center mb-8">
+                <h3 className="text-xl font-bold text-white mb-2">{plan.name}</h3>
+                <div className="flex items-baseline justify-center gap-1 mb-2">
+                  {plan.price ? (
+                    <span className="text-4xl font-bold text-white">{plan.price}</span>
+                  ) : (
+                    <>
+                      <span className="text-4xl font-bold text-white">
+                        ${isAnnual ? plan.annualPrice : plan.monthlyPrice}
+                      </span>
+                      <span className="text-white/60 text-lg">{isAnnual ? "/year" : "/month"}</span>
+                    </>
+                  )}
+                </div>
+                <p className="text-white/60 text-sm">{plan.description}</p>
+              </div>
+
+              <ul className="space-y-4 mb-8">
+                {plan.features.map((feature, featureIndex) => (
+                  <li key={featureIndex} className="flex items-center gap-3">
+                    <Check className="w-5 h-5 text-[#e78a53] flex-shrink-0" />
+                    <span className="text-white/80 text-sm">{feature}</span>
+                  </li>
+                ))}
+              </ul>
+
+              <button
+                className={`w-full py-3 px-6 rounded-lg font-medium transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] ${
+                  plan.popular
+                    ? "bg-gradient-to-r from-[#e78a53] to-[#e78a53]/80 text-white shadow-lg shadow-[#e78a53]/25 hover:shadow-[#e78a53]/40"
+                    : "bg-white/10 text-white border border-white/20 hover:bg-white/20"
+                }`}
+              >
+                {plan.cta}
+              </button>
+            </div>
+          ))}
+        </div>
+
+        {/* Bottom CTA */}
+        <div className="text-center mt-16">
+          <p className="text-white/60 mb-4">Need a custom solution? We're here to help.</p>
+          <button className="text-[#e78a53] hover:text-[#e78a53]/80 font-medium transition-colors hover:scale-105">
+            Contact our sales team →
+          </button>
+        </div>
+      </div>
+    </section>
+  )
+}
