@@ -1,4 +1,4 @@
-# Sniper Bot Website Template 🎯
+# Trading Bot Website Template 🎯
 
 A modern, high-performance trading bot interface built for Solana ecosystem token sniping and trading. BagSniper provides lightning-fast mint detection, automated liquidity pool sniping, and advanced trading features with a sleek, responsive web interface.
 
