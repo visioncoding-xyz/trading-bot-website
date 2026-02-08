@@ -55,16 +55,11 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={`dark ${inter.variable} ${jetbrainsMono.variable}`}>
-      <head>
-        <style>{`
-html {
-  font-family: ${inter.style.fontFamily};
-  --font-sans: ${inter.style.fontFamily};
-  --font-mono: ${jetbrainsMono.style.fontFamily};
-}
-        `}</style>
-      </head>
+    <html
+      lang="en"
+      suppressHydrationWarning
+      className={`dark ${inter.variable} ${jetbrainsMono.variable}`}
+    >
       <body className="dark font-sans antialiased">{children}</body>
     </html>
   )
