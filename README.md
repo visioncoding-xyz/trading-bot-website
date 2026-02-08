@@ -1,6 +1,10 @@
-# Trading Bot Website 🎯
+# Trading Bot Website 
 
 A modern, high-performance trading bot interface built for Solana ecosystem token sniping and trading. BagSniper provides lightning-fast mint detection, automated liquidity pool sniping, and advanced trading features with a sleek, responsive web interface.
+
+[![Deployed on Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?style=for-the-badge&logo=vercel)](https://vercel.com)
+[![Built with Next.js](https://img.shields.io/badge/Built%20with-Next.js-black?style=for-the-badge&logo=next.js)](https://nextjs.org)
+[![Powered by Solana](https://img.shields.io/badge/Powered%20by-Solana-14F195?style=for-the-badge&logo=solana)](https://solana.com)
 
 ## Features ✨
 
